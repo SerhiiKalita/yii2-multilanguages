@@ -1,0 +1,34 @@
+{
+    "name": "noname9/yii2-multilanguages",
+    "description": "The translateable behavior for the Yii2 framework",
+    "keywords": [
+        "yii2",
+        "translateable",
+        "translation",
+        "multilanguage"
+    ],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Alexander Kochetov",
+            "email": "creocoder@gmail.com"
+        },
+        {
+            "name": "Sergey Kalita",
+            "email": "ns.jeer@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "phpunit/dbunit": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "noname9\\multilanguages\\": "src"
+        }
+    }
+}
