@@ -227,9 +227,3 @@ class PostTranslation extends \yii\db\ActiveRecord
     }
 }
 ```
-
-## Donating
-
-Support this project and [others by creocoder](https://gratipay.com/creocoder/) via [gratipay](https://gratipay.com/creocoder/).
-
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.svg)](https://gratipay.com/creocoder/)
