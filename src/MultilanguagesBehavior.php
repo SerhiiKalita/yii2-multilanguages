@@ -40,8 +40,9 @@ class MultilanguagesBehavior extends Behavior
     public function events()
     {
         return [
-            ActiveRecord::EVENT_INIT => 'addTranslations',		// populate translations on new object
+            ActiveRecord::EVENT_BEFORE_INSERT => 'addTranslations',     // populate translations on new object
             ActiveRecord::EVENT_AFTER_FIND => 'addTranslations',	// populate translations on find object
+            ActiveRecord::EVENT_BEFORE_DELETE => 'beforeDelete',
             ActiveRecord::EVENT_AFTER_VALIDATE => 'afterValidate',
             ActiveRecord::EVENT_AFTER_INSERT => 'afterSave',
             ActiveRecord::EVENT_AFTER_UPDATE => 'afterSave',
@@ -123,7 +124,7 @@ class MultilanguagesBehavior extends Behavior
      * @return void
      */
     public function addTranslations()
-    {	
+    {
         $this->owner->{$this->translationRelation};
 		
         /* @var ActiveRecord $class */
@@ -131,10 +132,23 @@ class MultilanguagesBehavior extends Behavior
 		
         /* If method create or update - populate attributes */
 	$className = (new \ReflectionClass($class))->getShortName();
+//        var_dump($className);
 	foreach (Yii::$app->request->post($className, []) as $language => $data) {
             foreach ($data as $attribute => $translation) {
+                var_dump($data);
                 $this->owner->translate($language)->$attribute = $translation;
             }
+        }
+    }
+    
+    /**
+     * 
+     * @return void
+     */
+    public function beforeDelete()
+    {	
+        foreach ($this->owner->translations AS $translation){
+            $translation->delete();
         }
     }
 
