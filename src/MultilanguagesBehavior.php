@@ -196,4 +196,12 @@ class MultilanguagesBehavior extends Behavior
         $translation = $this->getTranslation();
         $translation->setAttribute($name, $value);
     }
+    
+    public function getDefaultTranslation($name){
+        if (empty($this->getTranslation()->getAttribute($name))){
+            return $this->getTranslation('en-US')->getAttribute($name);
+        } else {
+            return $this->getTranslation()->getAttribute($name);
+        }
+    }
 }
