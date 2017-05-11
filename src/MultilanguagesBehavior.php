@@ -132,10 +132,8 @@ class MultilanguagesBehavior extends Behavior
 		
         /* If method create or update - populate attributes */
 	$className = (new \ReflectionClass($class))->getShortName();
-//        var_dump($className);
 	foreach (Yii::$app->request->post($className, []) as $language => $data) {
             foreach ($data as $attribute => $translation) {
-                var_dump($data);
                 $this->owner->translate($language)->$attribute = $translation;
             }
         }
