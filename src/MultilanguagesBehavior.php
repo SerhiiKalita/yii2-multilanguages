@@ -163,6 +163,8 @@ class MultilanguagesBehavior extends Behavior
                 }
             }
         }
+		
+		$this->addTranslations();
     }
 
     /**
